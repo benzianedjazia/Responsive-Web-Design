@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Responsive des Contenus</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: auto;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header, section, footer {
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+        }
+        header h1, section h2, footer h2 {
+            margin-top: 0;
+        }
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+        .responsive-ratio {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .responsive-ratio::before {
+            content: '';
+            display: block;
+            padding-top: 56.25%; /* 16:9 ratio */
+        }
+        .responsive-ratio-square::before {
+            padding-top: 100%; /* 1:1 ratio */
+        }
+        .responsive-ratio iframe, .responsive-ratio img, .responsive-ratio video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        input, textarea, button {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        @media (max-width: 600px) {
+            header, section, footer {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestion Responsive des Contenus</h1>
+        </header>
+
+        <section>
+            <h2>Texte Responsive</h2>
+            <p>
+                Ce texte s'adapte à la taille de l'écran grâce aux propriétés CSS. 
+                La largeur du conteneur est définie en pourcentage pour s'assurer 
+                qu'il occupe toujours 90% de la largeur de la fenêtre, avec une 
+                largeur maximale de 1200px pour garantir une bonne lisibilité sur 
+                les écrans larges.
+            </p>
+        </section>
+
+        <section>
+            <h2>Images Responsives</h2>
+            <div class="responsive-ratio ">
+                <img src="https://via.placeholder.com/1200x675" alt="Image 16:9">
+            </div>
+            <h2>Images Responsives 2</h2>
+            <div class="responsive-ratio responsive-ratio-square">
+                <img src="https://via.placeholder.com/600x600" alt="Image Carrée">
+            </div>
+        </section>
+
+        <section>
+            <h2>Vidéos Responsives</h2>
+            <div class="responsive-ratio">
+                <video controls>
+                    <source src="sample-video.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la balise vidéo.
+                </video>
+            </div>
+        </section>
+
+        <section>
+            <h2>Formulaire Responsive</h2>
+            <form>
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name">
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email">
+
+                <label for="message">Message :</label>
+                <textarea id="message" name="message"></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Tableau Responsive</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Age</th>
+                        <th>Ville</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jean</td>
+                        <td>25</td>
+                        <td>Paris</td>
+                    </tr>
+                    <tr>
+                        <td>Marie</td>
+                        <td>30</td>
+                        <td>Lyon</td>
+                    </tr>
+                    <tr>
+                        <td>Paul</td>
+                        <td>35</td>
+                        <td>Marseille</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer>
+            <h2>Footer</h2>
+            <p>Ce footer s'adapte également à la taille de l'écran.</p>
+        </footer>
+    </div>
+</body>
+</html>
